@@ -146,18 +146,20 @@ Identified 4 Issue are
    if i refactor it then   code could be
 
 
-   ```javascript
-import React, { useState } from "react";
+ ### Updated Code
 
-function TodoList({ todos }) {
-  const [items, setItems] = useState(todos);
+   ```javascript
+        import React, { useState } from "react";
+
+          function TodoList({ todos }) {
+          const [items, setItems] = useState(todos);
  
-  const deleteTodo = (index) => {
+   const deleteTodo = (index) => {
   
     setItems(items.filter((_, i) => i !== index)); // Avoids state mutation
-  };
+    };
 
-  return (
+   return (
     <div>
       {items.map((todo, index) => (
       
@@ -169,8 +171,9 @@ function TodoList({ todos }) {
         </div>
       ))}
     </div>
-  );
-}
+   );
+    }
+   ```
   
    
 
