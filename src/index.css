@@ -1,355 +1,431 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f4f6;
+  padding: 20px;
+  color: #1f2937;
+}
 
-    margin: 0;
-    padding: 20px;
-    color: #1f2937;
+/* Container Styling */
+.todo-container {
+  max-width: 640px;
+  margin: auto;
+  padding: 25px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
 
-  }
-  
-  /* Container Styling */
-  .todo-container {
-    max-width: 640px;
+/* Tab Buttons */
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-    margin: auto;
-    padding: 25px;
-    background: #ffffff;
+.tab-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s;
+}
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-    transition: all 0.3s ease;
+.tab-buttons .active-tab {
+  background-color: #10b981;
+  color: white;
+  font-weight: 600;
+  transform: scale(1.03);
+}
 
- 
-  /* Tab Buttons */
-  .tab-buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .tab-buttons button {
-    flex: 1;
-    padding: 12px;
-    font-size: 15px;
-    border: none;
-    border-radius: 8px;
-    background: #e5e7eb;
-    color: #111827;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s;
-  }
-  
-  .tab-buttons .active-tab {
-    background-color: #10b981;
-    color: white;
-    font-weight: 600;
-    transform: scale(1.03);
-  }
-  
-  /* Task List */
-  .task-list {
-    list-style: none;
-    padding: 0;
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    margin: 0;
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
 
-  }
-  
-  .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
+.task-item:hover {
+  background-color: #f9fafb;
+}
 
-    border-bottom: 1px solid #e5e7eb;
-    border-radius: 6px;
-    transition: background 0.3s ease;
-  }
-  
-  .task-item:hover {
-    background-color: #f9fafb;
-  }
-  
-  /* Delete Button */
-  .delete-btn {
-    background: #ef4444;
-    color: white;
-    border: none;
-    padding: 6px 10px;
+/* Delete Button */
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
 
+.delete-btn:hover {
+  background: #dc2626;
+}
 
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s;
-  }
-  
-  .delete-btn:hover {
-    background: #dc2626;
-  }
-  
+/* Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #10b981;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-  /* Spinner */
-  .spinner {
-    width: 36px;
-    height: 36px;
-    border: 4px solid #e5e7eb;
+/* Task Input */
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
 
+.task-input input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s ease-in-out;
+}
 
-    border-top: 4px solid #10b981;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-    margin: 20px auto;
+.task-input input:focus {
+  border-color: #10b981;
+  outline: none;
+}
 
+.task-input button {
+  padding: 12px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
 
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
+.task-input button:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
 
-    100% { transform: rotate(360deg); }
+/* Search Bar */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
 
-  }
-  
-  /* Task Input */
-  .task-input {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #3b82f6;
+  border-radius: 50px;
+  font-size: 15px;
+}
 
-    flex-wrap: wrap;
-  }
+.search-bar input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
 
-  
-  .task-input input {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #d1d5db;
+.search-bar button {
+  padding: 12px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    border-radius: 10px;
-    font-size: 15px;
-    transition: 0.3s ease-in-out;
+.search-bar button:hover {
+  background: #2563eb;
+}
 
-  }
-  
-  .task-input input:focus {
-    border-color: #10b981;
+.header, h1 {
+  text-align: center;
+}
 
-    outline: none;
+/* Toggle Button */
+.toggle-btn {
+  padding: 10px 15px;
+  font-size: 15px;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  margin-top: 5%;
+}
 
-  }
-  
-  .task-input button {
-    padding: 12px 16px;
-    background: #10b981;
-    color: white;
-    border: none;
+.toggle-btn:hover {
+  background: #d97706;
+  transform: scale(1.05);
+}
 
-    border-radius: 10px;
+.toggle-btn:active {
+  background: #b45309;
+}
 
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s;
-  }
-  
-  .task-input button:hover {
-    background: #059669;
-    transform: translateY(-1px);
-
-  }
-  
-  /* Search Bar */
+/* Responsive Layout */
+@media (max-width: 500px) {
+  .tab-buttons,
+  .task-input,
   .search-bar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    
-
-  }
-  
-  .search-bar input {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #3b82f6;
-    border-radius: 50px;
-    font-size: 15px;
-
-  }
-  
-  .search-bar input:focus {
-    border-color: #2563eb;
-    outline: none;
-  }
-  
-  .search-bar button {
-    padding: 12px 16px;
-
-    background: #3b82f6;
-
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .search-bar button:hover {
-    background: #2563eb;
-  }
-  .header{
-    text-align: center;
-  }
-  
-  /* Toggle Button */
-  .toggle-btn {
-    padding: 10px 15px;
-    font-size: 15px;
-    background: #f59e0b;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s;
-    margin-top: 5%;
-  
-  }
-  
-  .toggle-btn:hover {
-    background: #d97706;
-    transform: scale(1.05);
-  }
-  
-  .toggle-btn:active {
-    background: #b45309;
-  }
-  
-  /* Responsive Layout */
-  @media (max-width: 500px) {
-    .tab-buttons,
-    .task-input,
-    .search-bar {
-      flex-direction: column;
-    }
-  
-    .tab-buttons button,
-    .task-input button,
-    .search-bar button {
-      width: 100%;
-    }
-  }
-  h1{
-    text-align: center;
-  }
-  .warning {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    background-color:white;
-    color: #856404;
-    border: 1px solid #ffeeba;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-    max-width: 350px;
     flex-direction: column;
-    gap: 5px;
   }
-  
-  /* Task Complted Marked */
-  .completed-task {
-    text-decoration: line-through;
-    color: #888;
-    opacity: 0.7;
+
+  .tab-buttons button,
+  .task-input button,
+  .search-bar button {
+    width: 100%;
   }
-  
-  .warning button {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    background-color: transparent;
-    color: #ef446f;
-    font-size: 1.1rem;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    line-height: 1;
-    transition: color 0.3s ease;
-  }
-  
-  .warning button:hover {
-    color: #a94442;
-  }
-  /* Controls Section */
+}
+
+/* Warning Message */
+.warning {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  background-color: white;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  max-width: 350px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.warning button {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: transparent;
+  color: #ef446f;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.warning button:hover {
+  color: #a94442;
+}
+
+/* Completed Task */
+.completed-task {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.7;
+}
+
+/* Controls Section */
 .controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  padding: 12px 16px;
+  font-size: 15px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.controls button:hover {
+  background: #2563eb;
+}
+
+.controls button:active {
+  background: #1d4ed8;
+}
+
+.controls button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+
+.controls button.undo {
+  background: #ef4444;
+}
+
+.controls button.undo:hover {
+  background: #dc2626;
+}
+
+.controls button.undo:active {
+  background: #b91c1c;
+}
+
+.controls button.redo {
+  background: #10b981;
+}
+
+.controls button.redo:hover {
+  background: #059669;
+}
+
+.controls button.redo:active {
+  background: #047857;
+}
+
+/* Edit/Save/Cancel Buttons */
+.edit-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.edit-btn:hover {
+  background: #d97706;
+}
+
+.save-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.save-btn:hover {
+  background: #059669;
+}
+
+.cancel-btn {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #f60a65;
+}
+
+/* Checkbox */
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.7;
+}
+/* Notification container */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  animation: slide-in 0.5s ease-out;
+}
+
+/* Notification style */
+.notification {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 15px 25px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+  border-left: 4px solid #f4c542;
+  position: relative; /* Added position relative */
+}
+
+/* Close button style */
+.close-btn {
+  position: absolute; /* Changed to absolute */
+  top: 0px;
+  right: 0px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #d83a3a;
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+  0% {
+    transform: translateX(-50%) translateY(-30px);
+    opacity: 0;
   }
-  
-  /* Undo/Redo Buttons */
-  .controls button {
-    padding: 12px 16px;
-    font-size: 15px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s;
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
-  
-  .controls button:hover {
-    background: #2563eb;
-  }
-  
-  .controls button:active {
-    background: #1d4ed8;
-  }
-  
-  .controls button:disabled {
-    background: #d1d5db;
-    cursor: not-allowed;
-  }
-  
-  /* Undo Button */
-  .controls button.undo {
-    background: #ef4444; /* Red color */
-  }
-  
-  .controls button.undo:hover {
-    background: #dc2626;
-  }
-  
-  .controls button.undo:active {
-    background: #b91c1c;
-  }
-  
-  /* Redo Button */
-  .controls button.redo {
-    background: #10b981; /* Green color */
-  }
-  
-  .controls button.redo:hover {
-    background: #059669;
-  }
-  
-  .controls button.redo:active {
-    background: #047857;
-  }
-  
+}
