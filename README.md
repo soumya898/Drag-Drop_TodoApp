@@ -89,10 +89,13 @@ This project is licensed under the **MIT License**.
 - **Search Functionality:** Filter tasks based on search query.
 - **Persistence:** Store tasks in `localStorage` for persistence.
 
-### Challenges Faced
-- **Drag-and-Drop Logic:** The drag-and-drop reordering was a bit tricky due to the complexity of managing state changes while maintaining the correct order of tasks.
-- **Undo/Redo Functionality:** Implementing undo and redo required careful tracking of task states to ensure accurate restoration of previous tasks.
-- **LocalStorage Handling:** Persisting tasks and keeping them updated in `localStorage` while maintaining performance was challenging.
+### Challenges Faced During Project Making 
+
+-Drag-and-Drop Functionality
+
+Challenge: One of the biggest challenges was implementing the drag-and-drop feature. React's state management and maintaining the correct order of tasks while reordering them was tricky.
+
+Solution: To address this, I used the dataTransfer API to get the dragged task's index, which I then used to update the order of tasks in the state. I ensured that when the task was dropped, it was placed at the correct index in the tasks array. I also accounted for cases where tasks were dropped in the same position, preventing unnecessary updates.
 
 ### Code Explanation
 
@@ -115,9 +118,19 @@ const handleDrop = (e, dropIndex) => {
 };
 ```
 
----
+2. Undo/Redo Functionality
 
-Once you've completed your edits, follow the steps below to push your changes:
+Challenge: Implementing undo and redo functionalities while managing an array of tasks proved to be a complex issue. Each task could be edited, added, or deleted, and keeping track of these changes for undo/redo required a structured approach to state management.
+
+Solution: I implemented a stack-based approach, where each state change (add, delete, or edit task) was pushed onto a stack. This allowed me to easily revert to the previous state when the user pressed the undo button and restore the state when the redo button was clicked.
+
+
+
+
+
+
+
+
 
 ### Push Updates
 ```bash
